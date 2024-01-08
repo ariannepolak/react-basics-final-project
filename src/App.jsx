@@ -1,0 +1,20 @@
+import { useState } from 'react';
+import { RecipeListPage } from './pages/RecipeListPage';
+import { RecipePage } from './pages/RecipePage';
+import { data } from './utils/data';
+
+export const App = () => {
+  const [selectedRecipe, setSelectedRecipe] = useState();
+
+  return (
+    <div>
+      {selectedRecipe ? (
+        <RecipePage recipe={selectedRecipe} clickFn={setSelectedRecipe} />
+      ) : (
+        <>
+          <RecipeListPage recipes={data.hits} clickFn={setSelectedRecipe} />
+        </>
+      )}
+    </div>
+  );
+};
